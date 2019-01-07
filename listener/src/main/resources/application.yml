@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: SCS-demo-listener
+
+  cloud.stream:
+    bindings:
+      wse_events_persoon:
+        destination: wse.events
+        group: listener-persoon
+        consumer:
+          partitioned: true
+      wse_events_onderneming:
+        destination: wse.events
+        group: listener-onderneming
+        consumer:
+          partitioned: true
+
+    rabbit.bindings:
+      wse_events_persoon:
+       consumer:
+          autoBindDlq: true
+          bindingRoutingKey: persoon
+          republishToDlq: true
+      wse_events_onderneming:
+        consumer:
+          autoBindDlq: true
+          bindingRoutingKey: onderneming
+          republishToDlq: true

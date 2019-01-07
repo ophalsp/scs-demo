@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: SCS-demo-listener-only-persoon
+
+  cloud.stream:
+    bindings:
+      wse_events_persoon:
+        destination: wse.events
+        group: listener-only-persoon
+        consumer:
+          partitioned: true
+
+    rabbit.bindings:
+      wse_events_persoon:
+        consumer:
+          autoBindDlq: true
+          bindingRoutingKey: persoon
+          republishToDlq: true

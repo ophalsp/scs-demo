@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: SCS-demo-logging
+
+  cloud.stream:
+    bindings:
+      wse_events:
+        destination: wse.events
+        group: logging
+#        consumer:
+#          partitioned: true
+    rabbit.bindings:
+      wse_events:
+        consumer:
+          autoBindDlq: true
+          bindingRoutingKey: "#"
+          republishToDlq: true

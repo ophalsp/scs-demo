@@ -25,7 +25,6 @@ public class PersoonSenderConfig {
                         .correlationId(UUID.randomUUID().toString())
                         .persoonUuid(UUID.randomUUID().toString())
                         .build())
-                .setHeader("type", PersoonGevondenEvent.class.getSimpleName())
                 .setHeader("routing", "wse.persoon.event.PersoonGevondenEvent")
                 .build();
     }
@@ -37,7 +36,6 @@ public class PersoonSenderConfig {
                 .withPayload(PersoonGevondenEvent.builder()
                         .correlationId(UUID.randomUUID().toString())
                         .build())
-                .setHeader("type", PersoonGevondenEvent.class.getSimpleName())
                 .setHeader("routing", "wse.persoon.event.PersoonGevondenEvent")
                 .build();
     }
@@ -49,7 +47,6 @@ public class PersoonSenderConfig {
                 .withPayload(RandomInvalidPersoonEvent.builder()
                         .correlationId(UUID.randomUUID().toString())
                         .build())
-                .setHeader("type", RandomInvalidPersoonEvent.class.getSimpleName())
                 .setHeader("routing", "wse.persoon.event.RandomInvalidPersoonEvent")
                 .build();
     }

@@ -14,5 +14,5 @@ spring:
       wse_events_persoon:
         consumer:
           autoBindDlq: true
-          bindingRoutingKey: wse.persoon.#
+          bindingRoutingKey: wse.persoon.event.#
           republishToDlq: true

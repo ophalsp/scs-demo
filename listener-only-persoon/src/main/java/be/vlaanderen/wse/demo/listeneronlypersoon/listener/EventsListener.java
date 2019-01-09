@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EventsListener {
 
-    @StreamListener(target = Channels.WSE_EVENTS_PERSOON, condition = "headers['type']=='RandomInvalidPersoonEvent'")
+    @StreamListener(target = Channels.WSE_EVENTS_PERSOON, condition = "headers['routing']=='wse.persoon.event.RandomInvalidPersoonEvent'")
     public void handlePersoonEvents(@Payload RandomInvalidPersoonEvent event) {
         log.info("handlePersoonEvents: " + ReflectionToStringBuilder.toString(event));
     }

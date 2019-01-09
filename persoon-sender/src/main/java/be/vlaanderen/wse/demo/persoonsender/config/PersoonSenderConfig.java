@@ -2,7 +2,6 @@ package be.vlaanderen.wse.demo.persoonsender.config;
 
 
 import be.vlaanderen.wse.demo.persoonsender.events.persoon.PersoonGevondenEvent;
-import be.vlaanderen.wse.demo.persoonsender.events.persoon.PersoonNietGevondenEvent;
 import be.vlaanderen.wse.demo.persoonsender.events.persoon.RandomInvalidPersoonEvent;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +26,7 @@ public class PersoonSenderConfig {
                         .persoonUuid(UUID.randomUUID().toString())
                         .build())
                 .setHeader("type", PersoonGevondenEvent.class.getSimpleName())
+                .setHeader("routing", "wse.persoon.event.PersoonGevondenEvent")
                 .build();
     }
 
@@ -38,6 +38,7 @@ public class PersoonSenderConfig {
                         .correlationId(UUID.randomUUID().toString())
                         .build())
                 .setHeader("type", PersoonGevondenEvent.class.getSimpleName())
+                .setHeader("routing", "wse.persoon.event.PersoonGevondenEvent")
                 .build();
     }
 
@@ -49,6 +50,7 @@ public class PersoonSenderConfig {
                         .correlationId(UUID.randomUUID().toString())
                         .build())
                 .setHeader("type", RandomInvalidPersoonEvent.class.getSimpleName())
+                .setHeader("routing", "wse.persoon.event.RandomInvalidPersoonEvent")
                 .build();
     }
 }

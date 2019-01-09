@@ -7,12 +7,12 @@ spring:
       wse_events_persoon:
         destination: wse.events
         group: listener-only-persoon
-        consumer:
-          partitioned: true
+#        consumer:
+#          partitioned: true
 
     rabbit.bindings:
       wse_events_persoon:
         consumer:
           autoBindDlq: true
-          bindingRoutingKey: persoon
+          bindingRoutingKey: wse.persoon.#
           republishToDlq: true
